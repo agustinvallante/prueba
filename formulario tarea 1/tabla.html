@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla de Datos</title>
+</head>
+<body>
+    <h1>Tabla de Datos</h1>
+    <table border="1" id="tablaDatos">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Los datos se insertan dinámicamente -->
+        </tbody>
+    </table>
+
+    <script>
+        const listaDatos = JSON.parse(localStorage.getItem('listaDatos')) || [];
+
+        const tabla = document.getElementById('tablaDatos').getElementsByTagName('tbody')[0];
+        
+        listaDatos.forEach(function(datos) {
+            const fila = tabla.insertRow();
+        
+            const celdaNombre = fila.insertCell(0);
+            const celdaApellido = fila.insertCell(1);
+        
+            celdaNombre.textContent = datos.nombre;
+            celdaApellido.textContent = datos.apellido;
+        });
+    </script>
+</body>
+</html>
